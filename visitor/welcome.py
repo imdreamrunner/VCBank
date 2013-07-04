@@ -1,15 +1,17 @@
 import web
+from models import *
+from web.contrib.template import render_jinja
 
-view = web.template.render('view/welcome')
+view = render_jinja('view/visitor')
 
 class index:
     def GET(self):
-        return view.index()
+        return view.index(user = User.status())
 
 class earn:
     def GET(self):
-        return view.earn()
+        return view.earn(user = User.status())
 
 class donate:
     def GET(self):
-        return view.donate()
+        return view.donate(user = User.status())

@@ -73,7 +73,16 @@ em {
     }
   }
 
-  #user-box {
+  .borderless-link {
+    display: block;
+    width: 70px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #help-box {
     border-left: 1px solid #DDDDDD;
 
     li {
@@ -81,19 +90,23 @@ em {
     }
 
     a {
-      display: block;
-      width: 70px;
-      height: 80px;
-      line-height: 80px;
-      text-align: center;
-      text-decoration: none;
-
-      &#help {
-        color: #999;
-        &:hover {
-          color: #555;
-        }
+      .borderless-link;
+      color: #999;
+      &:hover {
+        color: #555;
       }
+    }
+  }
+
+  #user-box {
+    margin-left: 0;
+
+    li {
+      display: table-cell;
+    }
+
+    a {
+      .borderless-link;
     }
   }
 }
@@ -360,11 +373,11 @@ em {
 
     a.donate {
       position: absolute;
-      margin:  10px 0 0 375px;
+      margin:  10px 0 0 370px;
       display: block;
-      width: 85px;
-      height: 30px;
-      line-height: 30px;
+      width: 90px;
+      height: 26px;
+      line-height: 26px;
       border-radius: 4px;
       text-align: center;
       background: #F60;
@@ -377,10 +390,10 @@ em {
 
     .remaining-time {
       position: absolute;
-      margin:  40px 0 0 375px;
+      margin:  38px 0 0 370px;
       font-size: 10px;
       line-height: 14px;
-      width: 85px;
+      width: 90px;
       text-align: center;
       color: #AAA;
     }

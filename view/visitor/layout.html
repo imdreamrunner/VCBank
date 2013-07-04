@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% block head %}
+  <meta charset="utf-8">
+  <title>{% block title %}VCBank{% endblock %} - Volunteer Connect Bank</title>
+  <link rel="stylesheet" href="/static/libraries/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/static/stylesheets/main.css"/>
+  {% endblock %}
+</head>
+<body>
+<div id="header">
+  <div class="container">
+    <a id="logo" href="/">Volunteer Connect Bank</a>
+    <ul id="main-navigator">
+      <li><a href="/earn"><strong>Earn</strong><span>the <em>time</em></span></a></li>
+      <li><a href="/donate"><strong>Donate</strong><span>your <em>time</em></span></a></li>
+    </ul>
+    <div id="search">
+      <input id="search-keyword" placeholder="Search"/>
+    </div>
+    <ul id="user-box" class="pull-right">
+      {% if user %}
+      <li><a href="/account">{{ user.firstname|e }}</a></li>
+      <li><a href="/logout">Log out</a></li>
+      {% else %}
+      <li><a href="/signup">Sign up</a></li>
+      <li><a href="/login">Log in</a>
+      {% endif %}
+    </ul>
+    <ul id="help-box" class="pull-right">
+      <li><a id="help" href="#">Help</a></li>
+    </ul>
+  </div>
+</div>
+<div id="body">
+{% block body %}{% endblock %}
+</div>
+<div id="footer">
+  <hr />
+  <div id="copyright" class="container">
+    Copyright &copy; 2013 VCBank
+  </div>
+</div>
+{% block scripts %}
+<script src="/static/libraries/jquery-1.10.1.min.js"></script>
+<script src="/static/libraries/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}
+</body>
+</html>

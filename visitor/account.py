@@ -3,12 +3,13 @@ import json
 import core
 
 from models import *
+from web.contrib.template import render_jinja
 
-view = web.template.render('view/account')
+view = render_jinja('view/visitor')
 
 class create:
     def GET(self):
-        return view.create()
+        return view.signup(user = User.status())
 
     def POST(self):
         """
@@ -30,7 +31,7 @@ class create:
 
 class login:
     def GET(self):
-        return view.login()
+        return view.login(user = User.status())
 
     def POST(self):
         try:
@@ -50,8 +51,9 @@ class login:
 
 class display:
     def GET(self):
-        if 'user_id' in core.session:
-            return view.display()
+        status = User.status()
+        if status:
+            return view.account(user = status)
         else:
             return -1
 

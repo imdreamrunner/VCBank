@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="login-main" class="container">
+  <div class="span8 offset2">
+    <form id="user-info" class="form-horizontal">
+      <h2>Volunteer log in</h2>
+      <div class="control-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+          <input type="email" id="email" name="email" placeholder="Email">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input type="password" id="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox"> Remember me
+          </label>
+          <button type="submit" class="btn">Log in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="/static/libraries/hash.js"></script>
+<script src="/static/scripts/account/login.js"></script>
+{% endblock %}
