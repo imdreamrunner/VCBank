@@ -1,127 +1,100 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Create Account - Volunteer Connect Bank</title>
-  <link rel="stylesheet" href="/static/libraries/bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" type="text/css" href="/static/stylesheets/main.css"/>
-</head>
-<body>
-<div id="header">
-  <div class="container">
-    <a id="logo" href="./">Volunteer Connect Bank</a>
-    <ul id="main-navigator">
-      <li><a href="#"><strong>Earn</strong><span>the <em>time</em></span></a></li>
-      <li><a href="#"><strong>Donate</strong><span>your <em>time</em></span></a></li>
-    </ul>
-    <div id="search">
-      <input id="search-keyword" placeholder="Search"/>
-    </div>
-    <ul id="user-box" class="pull-right">
-      <li><a id="help" href="#">Help</a></li>
-      <li><a href="/signup">Sign up</a></li>
-      <li><a href="/login">Log in</a></li>
-    </ul>
+{% extends "layout.html" %}
+{% block body %}
+<div id="signup-main" class="container">
+  <div class="span8 offset2">
+    <form id="user-info" class="form-horizontal">
+      <h2>Sign Up as Volunteer</h2>
+
+      <div class="control-group">
+        <label class="control-label" for="firstname">First Name</label>
+        <div class="controls">
+          <input type="text" id="firstname" name="firstname" placeholder="First Name">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="lastname">Last Name</label>
+        <div class="controls">
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+          <input type="email" id="email" name="email" placeholder="Email">
+          <p class="description">This will be your account identifier.</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="nationality">Nationality</label>
+        <div class="controls">
+          <select id="nationality" name="nationality">
+            <option value="SG">Singapore</option>
+            <option value="">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="id-type">Identity Document</label>
+        <div class="controls">
+          <select id="id-type" name="id-type">
+            <option selected="selected" disabled="disabled">Please select...</option>
+            <option value="1">NRIC (Singaporean or PR)</option>
+            <option value="2">FIN (Foreigner)</option>
+            <option value="3">Passport</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <!--
+        <label class="control-label" for="id-info">Identity Information</label>
+        -->
+        <div class="controls">
+          <input type="text" id="id-info" name="id-info" placeholder="NRIC / FIN / Passport number">
+          <p class="description">Eg. G123456789</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="phone">Contact Number</label>
+        <div class="controls">
+          <input type="text" id="phone" name="phone" placeholder="Contact Number" value="+65">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input type="password" id="password" placeholder="Password">
+
+          <p class="description">At least 6 characters.</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <!--
+        <label class="control-label" for="password2">Confirm Password</label>
+        -->
+        <div class="controls">
+          <input type="password" id="password2" placeholder="Confirm Passwordd">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <input id="submit-button" type="submit" class="btn" value="Sign up">
+        </div>
+      </div>
+    </form>
   </div>
 </div>
-<div id="body">
-  <div id="signup-main" class="container">
-    <div class="span8 offset2">
-      <form id="user-info" class="form-horizontal">
-        <h2>Sign Up as Volunteer</h2>
-
-        <div class="control-group">
-          <label class="control-label" for="firstname">First Name</label>
-          <div class="controls">
-            <input type="text" id="firstname" name="firstname" placeholder="First Name">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="lastname">Last Name</label>
-          <div class="controls">
-            <input type="text" id="lastname" name="lastname" placeholder="Last Name">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-            <input type="email" id="email" name="email" placeholder="Email">
-            <p class="description">This will be your account identifier.</p>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="nationality">Nationality</label>
-          <div class="controls">
-            <select id="nationality" name="nationality">
-              <option value="SG">Singapore</option>
-              <option value="">Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="id-type">Identity Document</label>
-          <div class="controls">
-            <select id="id-type" name="id-type">
-              <option selected="selected" disabled="disabled">Please select...</option>
-              <option value="1">NRIC (Singaporean or PR)</option>
-              <option value="2">FIN (Foreigner)</option>
-              <option value="3">Passport</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <!--
-          <label class="control-label" for="id-info">Identity Information</label>
-          -->
-          <div class="controls">
-            <input type="text" id="id-info" name="id-info" placeholder="NRIC / FIN / Passport number">
-            <p class="description">Eg. G123456789</p>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="phone">Contact Number</label>
-          <div class="controls">
-            <input type="text" id="phone" name="phone" placeholder="Contact Number" value="+65">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="password">Password</label>
-          <div class="controls">
-            <input type="password" id="password" placeholder="Password">
-
-            <p class="description">At least 6 characters.</p>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="password2">Confirm Password</label>
-          <div class="controls">
-            <input type="password" id="password2" placeholder="Confirm Passwordd">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <div class="controls">
-            <button type="submit" class="btn">Sign up</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div id="footer">
-
-</div>
-<script src="/static/libraries/jquery-1.10.1.min.js"></script>
-<script src="/static/libraries/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
 <script src="/static/libraries/hash.js"></script>
 <script src="/static/scripts/account/signup.js"></script>
-</body>
-</html>
+{% endblock %}

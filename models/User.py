@@ -35,9 +35,9 @@ def create(user):
         raise Exception(2)
     if findByEmail(email):
         raise Exception(3)
-    if len(password) < 6:
+    if len(firstname) == 0:
         raise Exception(4)
-    if len(firstname) == 0 or len(lastname) == 0:
+    if len(lastname) == 0:
         raise Exception(5)
 
     chars = chars=string.ascii_lowercase + string.digits
