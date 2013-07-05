@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Interface - Volunteer Connect Bank</title>
+  <link rel="stylesheet" href="/static/libraries/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/static/stylesheets/admin.css"/>
+</head>
+<body>
+<h1 id="logo">VCBank admin interface</h1>
+<div id="navbar">
+  <div id="search-bar" class="pull-left">
+    <i class="icon-search icon-white"></i>
+    <input type="text" placeholder="Quick search...">
+  </div>
+  <ul id="top-nav" class="nav btn-group pull-right">
+    <li class="btn btn-inverse top-nav-btn">
+      <a title="" href="#" class="top-nav-a">
+        <i class="icon-white icon-user"></i>
+        <span class="text">Profile</span>
+      </a>
+    </li>
+    <li class="btn btn-inverse top-nav-btn">
+      <a title="" href="#" class="top-nav-a" data-toggle="dropdown">
+        <i class="icon-white icon-envelope"></i>
+        <span class="text">Messages</span>
+        <span class="label label-important">5</span>
+        <span class="caret"></span>
+      </a>
+      <ul id="top-nav-dropdown" class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Inbox</a></li>
+        <li><a tabindex="-1" href="#">New message</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Trash</a></li>
+      </ul>
+    </li>
+    <li class="btn btn-inverse top-nav-btn">
+      <a title="" href="#" class="top-nav-a">
+        <i class="icon-white icon-cog"></i>
+        <span class="text">Settings</span>
+      </a>
+    </li>
+    <li class="btn btn-inverse top-nav-btn">
+      <a title="" href="#" class="top-nav-a">
+        <i class="icon-white icon-share-alt"></i>
+        <span class="text">Log out</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="sidebar">
+  <ul id="menu">
+    <li>
+      <a class="active" href="#">
+        <i class="icon-white icon-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-white icon-list-alt"></i>
+        <span>Accounts</span>
+        <span class="label label-inverse">7</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-white icon-gift"></i>
+        <span>Funding projects</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-white icon-leaf"></i>
+        <span>Volunteer projects</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-white icon-eye-open"></i>
+        <span>Historical records</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-white icon-tasks"></i>
+        <span>Statics</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="content">
+  <iframe id="main-frame" src="/admin/dashboard"></iframe>
+</div>
+<script src="/static/libraries/jquery-1.10.1.min.js"></script>
+<script src="/static/libraries/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/scripts/admin/index.js"></script>
+</body>
+</html>

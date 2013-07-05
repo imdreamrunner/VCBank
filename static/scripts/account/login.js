@@ -36,7 +36,7 @@ $(document).ready(function() {
         if (data.hasOwnProperty('error')) {
           if (data.error == 0) {
             console.log('success');
-            window.location = '/';
+            window.location = '/account';
           } else {
             enableSubmit();
             switch (parseInt(data.error)) {
