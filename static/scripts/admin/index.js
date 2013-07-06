@@ -4,7 +4,7 @@ $(document).ready(function() {
   function resizeFrame() {
     console.log('here');
     mainFrame.css({
-      height: $(window).height() - 50,
+      height: $(window).height() - 40,
       width: $(window).width() - 220
     });
 
