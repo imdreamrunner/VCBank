@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Interface - Volunteer Connect Bank</title>
+  <link rel="stylesheet" href="/static/libraries/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/static/stylesheets/admin-iframe.css"/>
+</head>
+<body>
+<h1>Accounts</h1>
+<div id="tabs">
+  <a href="./accounts">Statics</a>
+  <a href="./accountsSearch" class="current">Search</a>
+  <a href="./accountsLists">Lists</a>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget">
+        <div class="title">
+        <span class="icon">
+          <i class="icon-bookmark"></i>
+        </span>
+          <h3>Search Accounts</h3>
+        </div>
+        <div class="content">
+          <form class="form-horizontal">
+
+            <div class="control-group">
+              <label class="control-label" for="firstname">First Name</label>
+              <div class="controls">
+                <input type="text" id="firstname" name="firstname" placeholder="First Name">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="lastname">Last Name</label>
+              <div class="controls">
+                <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="email">Email</label>
+              <div class="controls">
+                <input type="email" id="email" name="email" placeholder="Email">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn">Search</button>
+                <p>* All fields are optional.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/libraries/jquery-1.10.1.min.js"></script>
+<script src="/static/libraries/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

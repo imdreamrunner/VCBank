@@ -10,6 +10,10 @@ urls = (
     '/logout',              'visitor.account.logout',
     '/admin',               'admin.manage.index',
     '/admin/dashboard',     'admin.manage.dashboard',
+    '/admin/accounts',      'admin.manage.accounts',
+    '/admin/accountsSearch','admin.manage.accountsSearch',
+    '/admin/accountsLists', 'admin.manage.accountsLists',
+    '/admin/getAccounts',   'admin.manage.getAccounts',
     '/admin/login',         'admin.auth.login',
     '/admin/captcha.png',   'admin.auth.captcha'
 )
