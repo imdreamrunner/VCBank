@@ -13,6 +13,7 @@ urls = (
     '/admin/accounts',      'admin.manage.accounts',
     '/admin/accountsSearch','admin.manage.accountsSearch',
     '/admin/accountsLists', 'admin.manage.accountsLists',
+    '/admin/accountsCreate','admin.manage.accountsCreate',
     '/admin/getAccounts',   'admin.manage.getAccounts',
     '/admin/login',         'admin.auth.login',
     '/admin/captcha.png',   'admin.auth.captcha'

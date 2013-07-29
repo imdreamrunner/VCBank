@@ -12,6 +12,13 @@ def status():
     else:
         return False
 
+def findUserSafe(id):
+    user = findById(id)
+    if user:
+        return safeData(user)
+    else:
+        return False
+
 def findById(id):
     try:
         return core.db.select('user', where='id = ' + str(id), limit = 1)[0]
@@ -24,6 +31,36 @@ def findByEmail(email):
         return core.db.select('user', where='email = "' + email + '"', limit = 1)[0]
     except BaseException:
         return False
+
+def getList(order = 'id', where = None):
+    return list(getIter(order, where))
+
+def getIter(order = 'id', where = None):
+    if where:
+        return core.db.select('user', where = where, order = order)
+    else:
+        return core.db.select('user', order = order)
+
+def getSafe(order = 'id', where = None):
+    """
+    Remove the password and salt data.
+    Convert the datetime format to string (for json decode).
+    """
+    users = getIter(order, where)
+    returnObj = []
+    for user in users:
+        returnObj.append(safeData(user))
+    return returnObj
+
+def safeData(user):
+    newUser = {}
+    for prop, value in user.iteritems():
+        if prop == 'password' or prop == 'salt':
+            continue
+        if isinstance(value, datetime):
+            value = value.strftime("%Y-%m-%d %H:%M:%S")
+        newUser[prop] = value
+    return newUser
 
 def create(user):
     email = user['email'].strip()

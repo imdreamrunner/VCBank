@@ -24,7 +24,12 @@ class accountsSearch:
 class accountsLists:
     def GET(self):
         return view.accountsLists()
+class accountsCreate:
+    def GET(self):
+        return view.accountsCreate()
 
 class getAccounts:
     def GET(self):
-        return True
+        users = User.getSafe()
+        print users
+        return json.dumps(users)
