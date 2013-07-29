@@ -40,7 +40,7 @@ def create(user):
     if len(lastname) == 0:
         raise Exception(5)
 
-    chars = chars=string.ascii_lowercase + string.digits
+    chars = string.ascii_lowercase + string.digits
     salt = ''.join(random.choice(chars) for x in range(16))
     password = hashlib.sha512(password + salt).hexdigest()
 
