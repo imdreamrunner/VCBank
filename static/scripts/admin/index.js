@@ -10,7 +10,7 @@ function loadFrame(name) {
   return function() {
     $('#menu').find('.active').removeClass('active');
     $('#menu-'+name).addClass('active');
-    mainFrame.src = '/admin/' + name;
+    mainFrame.src = '/admin?frame=' + name;
   }
 }
 

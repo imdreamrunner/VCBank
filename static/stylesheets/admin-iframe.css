@@ -69,3 +69,8 @@ h1 {
 .table-striped tbody > tr:nth-child(odd) > th {
   background-color: #f0f0f0;
 }
+.ajax-loader {
+  background: url('/static/images/ajax-loader.gif') center no-repeat;
+  height: 15px;
+  display: block;
+}

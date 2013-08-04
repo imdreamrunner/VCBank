@@ -59,6 +59,6 @@ class display:
 
 class logout:
     def GET(self):
-        if 'user_id' in core.session:
-            del core.session.user_id
+        if 'uid' in core.session:
+            del core.session.uid
         raise web.seeother('/login')

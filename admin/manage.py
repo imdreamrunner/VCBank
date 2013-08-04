@@ -7,29 +7,34 @@ view = render_jinja('view/admin')
 
 class index:
     def GET(self):
-        return view.index()
+        inputs = web.input()
+        if 'frame' in inputs:
+            try:
+                frame = getattr(view, inputs.frame)
+                return frame()
+            except BaseException:
+                return 'Unable to load frame ' + inputs.frame
+        else:
+            return view.index()
 
-class dashboard:
+class getData:
     def GET(self):
-        return view.dashboard()
+        return "Undefined method"
 
-class accounts:
-    def GET(self):
-        return view.accounts()
-
-class accountsSearch:
-    def GET(self):
-        return view.accountsSearch()
-
-class accountsLists:
-    def GET(self):
-        return view.accountsLists()
-class accountsCreate:
-    def GET(self):
-        return view.accountsCreate()
-
-class getAccounts:
-    def GET(self):
-        users = User.getSafe()
-        print users
-        return json.dumps(users)
+    def POST(self):
+        inputs = web.input()
+        if inputs.request == 'users':
+            order = where = False
+            if 'order' in inputs:
+                order = inputs.order
+            if 'where' in inputs:
+                where = inputs.where
+            if order and where:
+                users = User.getAllSafely(order, where)
+            elif order:
+                users = User.getAllSafely(order)
+            elif where:
+                users = User.getAllSafely(where = where)
+            else:
+                users = User.getAllSafely()
+            return json.dumps(users)

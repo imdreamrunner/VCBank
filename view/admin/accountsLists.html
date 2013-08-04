@@ -9,9 +9,10 @@
 <body>
 <h1>Accounts</h1>
 <div id="tabs">
-  <a href="./accounts">Statics</a>
-  <a href="./accountsSearch">Search</a>
-  <a href="./accountsLists" class="current">Lists</a>
+  <a href="/admin?frame=accounts">Statics</a>
+  <a href="/admin?frame=accountsSearch">Search</a>
+  <a href="/admin?frame=accountsLists" class="current">Lists</a>
+  <a href="/admin?frame=accountsCreate">Create</a>
 </div>
 <div class="container-fluid">
   <div class="row-fluid">
@@ -21,7 +22,7 @@
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-          <h3>List by Savings</h3>
+          <h3>List by Saving</h3>
         </div>
         <div class="content">
           <table class="table table-striped">
@@ -32,24 +33,10 @@
                 <th>Saving</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Xinzi Zhou</td>
-                <td>10.00</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Test</td>
-                <td>10.00</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Test</td>
-                <td>10.00</td>
-              </tr>
+            <tbody id="list-by-saving" class="">
             </tbody>
           </table>
+          <div id="list-by-saving-loader" class="ajax-loader" style="margin-top: -20px"></div>
         </div>
       </div>
     </div>
@@ -59,10 +46,20 @@
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-          <h3>List by Dates</h3>
+          <h3>List by Date</h3>
         </div>
         <div class="content">
-
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Saving</th>
+            </tr>
+            </thead>
+            <tbody id="list-by-date">
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -73,7 +70,40 @@
 <script src="/static/scripts/admin/frame.js"></script>
 <script>
   $(document).ready(function() {
-    
+    /*
+     * List by Saving
+     */
+    var postData = {request: 'users'};
+    $.post('/admin/getData', postData, function(data) {
+      var tbody = '';
+      for (var id in data) {
+        var user = data[id]
+        var tr = '';
+        tr += '<td>' + user['uid'].toString() + '</td>';
+        tr += '<td>' + user['firstname'] + ' <strong>' + user['lastname'] + '</strong></td>';
+        tr += '<td>' + '0.00' + '</td>';
+        tbody += '<tr>' + tr + '</tr>';
+      }
+      $('#list-by-saving-loader').hide();
+      $('#list-by-saving').html(tbody);
+    }, 'json');
+
+    /*
+     * List by Date
+     */
+    postData = {request: 'users', order: 'create_time DESC'};
+    $.post('/admin/getData', postData, function(data) {
+      var tbody = '';
+      for (var id in data) {
+        var user = data[id]
+        var tr = '';
+        tr += '<td>' + user['uid'].toString() + '</td>';
+        tr += '<td>' + user['firstname'] + ' <strong>' + user['lastname'] + '</strong></td>';
+        tr += '<td>' + '0.00' + '</td>';
+        tbody += '<tr>' + tr + '</tr>';
+      }
+      $('#list-by-date').html(tbody);
+    }, 'json');
   });
 </script>
 </body>

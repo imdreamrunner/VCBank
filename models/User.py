@@ -6,47 +6,47 @@ import string
 import hashlib
 
 def status():
-    if 'user_id' in core.session:
-        id = core.session.user_id
-        return findById(id)
+    if 'uid' in core.session:
+        id = core.session.uid
+        return getOne(id)
     else:
         return False
 
-def findUserSafe(id):
-    user = findById(id)
+def getOneSafely(id):
+    user = getOne(id)
     if user:
         return safeData(user)
     else:
         return False
 
-def findById(id):
+def getOne(id):
     try:
-        return core.db.select('user', where='id = ' + str(id), limit = 1)[0]
+        return core.db.select('user', where='uid = ' + str(id), limit = 1)[0]
     except BaseException:
         return False
 
 
-def findByEmail(email):
+def getOneByEmail(email):
     try:
         return core.db.select('user', where='email = "' + email + '"', limit = 1)[0]
     except BaseException:
         return False
 
-def getList(order = 'id', where = None):
-    return list(getIter(order, where))
-
-def getIter(order = 'id', where = None):
+def getAll(order = 'uid', where = None):
     if where:
         return core.db.select('user', where = where, order = order)
     else:
         return core.db.select('user', order = order)
 
-def getSafe(order = 'id', where = None):
+def getAllAsList(order = 'uid', where = None):
+    return list(getAll(order, where))
+
+def getAllSafely(order = 'uid', where = None):
     """
     Remove the password and salt data.
     Convert the datetime format to string (for json decode).
     """
-    users = getIter(order, where)
+    users = getAll(order, where)
     returnObj = []
     for user in users:
         returnObj.append(safeData(user))
@@ -70,7 +70,7 @@ def create(user):
 
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
         raise Exception(2)
-    if findByEmail(email):
+    if getOneByEmail(email):
         raise Exception(3)
     if len(firstname) == 0:
         raise Exception(4)
@@ -90,14 +90,14 @@ def create(user):
         create_time = datetime.now())
 
 def login(email, password):
-    user = findByEmail(email)
+    user = getOneByEmail(email)
     if not user:
         raise Exception(2)
     if user.password != hashlib.sha512(password + user.salt).hexdigest():
         raise Exception(3)
-    core.session.user_id = user.id
+    core.session.uid = user.uid
 
-    print core.session.user_id
+    print core.session.uid
 
 def loginById(id):
     pass
