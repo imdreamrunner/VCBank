@@ -20,9 +20,9 @@ def getOneSafely(id):
     else:
         return False
 
-def getOne(id):
+def getOne(uid):
     try:
-        return core.db.select('user', where='uid = ' + str(id), limit = 1)[0]
+        return core.db.select('user', where='uid = ' + str(uid), limit = 1)[0]
     except BaseException:
         return False
 

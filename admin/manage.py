@@ -1,3 +1,4 @@
+from datetime import datetime
 import web
 from models import *
 import json
@@ -24,7 +25,10 @@ class display:
             return 'Model not specified'
         m = inputs.m
         if m == 'account':
-            return view.displayAccount()
+            user = User.getOne(inputs.uid)
+            create_time = datetime.fromtimestamp(user.create_time).strftime('%Y-%m-%d %H:%M:%S')
+            user['create_time_string'] = create_time
+            return view.displayAccount(user = user)
 
 class getData:
     def GET(self):
