@@ -4,7 +4,7 @@
 <a href="/admin?frame=accounts">Statics</a>
 <a href="/admin?frame=accountsSearch">Search</a>
 <a href="/admin?frame=accountsLists">Lists</a>
-<a href="/admin?frame=accountsCreate" class="current">Create</a>
+<a href="/admin?frame=accountsCreate">Create</a>
 {% endblock %}
 {% block body %}
 <div class="row-fluid">
@@ -14,20 +14,17 @@
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-        <h3>Account Statics</h3>
+        <h3>Account Details</h3>
       </div>
       <div class="content">
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
-        <p>This is the content.</p>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+  });
+</script>
 {% endblock %}

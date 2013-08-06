@@ -1,5 +1,6 @@
 import core
 from datetime import datetime
+import time
 import re
 import random
 import string
@@ -57,6 +58,7 @@ def safeData(user):
     for prop, value in user.iteritems():
         if prop == 'password' or prop == 'salt':
             continue
+        # This is no longer needed. Dates is stored as integer.
         if isinstance(value, datetime):
             value = value.strftime("%Y-%m-%d %H:%M:%S")
         newUser[prop] = value
@@ -87,7 +89,9 @@ def create(user):
         firstname = firstname,
         lastname = lastname,
         salt = salt,
-        create_time = datetime.now())
+        #create_time = datetime.now(),
+        create_time = int(time.time())
+    )
 
 def login(email, password):
     user = getOneByEmail(email)

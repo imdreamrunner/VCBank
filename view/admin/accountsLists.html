@@ -1,110 +1,97 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Admin Interface - Volunteer Connect Bank</title>
-  <link rel="stylesheet" href="/static/libraries/bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/static/stylesheets/admin-iframe.css"/>
-</head>
-<body>
-<h1>Accounts</h1>
-<div id="tabs">
-  <a href="/admin?frame=accounts">Statics</a>
-  <a href="/admin?frame=accountsSearch">Search</a>
-  <a href="/admin?frame=accountsLists" class="current">Lists</a>
-  <a href="/admin?frame=accountsCreate">Create</a>
-</div>
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span6">
-      <div class="widget">
-        <div class="title">
+{% extends "frame.html" %}
+{% block heading %}Accounts{% endblock %}
+{% block tabs %}
+<a href="/admin?frame=accounts">Statics</a>
+<a href="/admin?frame=accountsSearch">Search</a>
+<a href="/admin?frame=accountsLists" class="current">Lists</a>
+<a href="/admin?frame=accountsCreate">Create</a>
+{% endblock %}
+{% block body %}
+<div class="row-fluid">
+  <div class="span6">
+    <div class="widget">
+      <div class="title">
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-          <h3>List by Saving</h3>
-        </div>
-        <div class="content">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Saving</th>
-              </tr>
-            </thead>
-            <tbody id="list-by-saving" class="">
-            </tbody>
-          </table>
-          <div id="list-by-saving-loader" class="ajax-loader" style="margin-top: -20px"></div>
-        </div>
+        <h3>List by Saving</h3>
+      </div>
+      <div class="content">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Saving</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody id="list-by-saving" class="">
+          </tbody>
+        </table>
+        <div id="list-by-saving-loader" class="ajax-loader" style="margin-top: -20px"></div>
       </div>
     </div>
-    <div class="span6">
-      <div class="widget">
-        <div class="title">
+  </div>
+  <div class="span6">
+    <div class="widget">
+      <div class="title">
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-          <h3>List by Date</h3>
-        </div>
-        <div class="content">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Saving</th>
-            </tr>
-            </thead>
-            <tbody id="list-by-date">
-            </tbody>
-          </table>
-        </div>
+        <h3>List by Date</h3>
+      </div>
+      <div class="content">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Saving</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody id="list-by-date">
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
-<script src="/static/libraries/jquery-1.10.1.min.js"></script>
-<script src="/static/libraries/bootstrap/js/bootstrap.min.js"></script>
-<script src="/static/scripts/admin/frame.js"></script>
+{% endblock %}
+{% block scripts %}
 <script>
-  $(document).ready(function() {
-    /*
-     * List by Saving
-     */
-    var postData = {request: 'users'};
-    $.post('/admin/getData', postData, function(data) {
-      var tbody = '';
-      for (var id in data) {
-        var user = data[id]
-        var tr = '';
-        tr += '<td>' + user['uid'].toString() + '</td>';
-        tr += '<td>' + user['firstname'] + ' <strong>' + user['lastname'] + '</strong></td>';
-        tr += '<td>' + '0.00' + '</td>';
-        tbody += '<tr>' + tr + '</tr>';
-      }
-      $('#list-by-saving-loader').hide();
-      $('#list-by-saving').html(tbody);
-    }, 'json');
+function getTableHtml(data) {
+  var tbody = '';
+  for (var id in data) {
+    var user = data[id]
+    var tr = '';
+    tr += '<td>'+ user['uid'].toString() + '</td>';
+    tr += '<td>'+ user['firstname'] + ' <strong>' + user['lastname'] + '</strong></td>';
+    tr += '<td>' + '0.00' + '</td>';
+    tr += '<td><a href="/admin/display?m=account&uid=' + user['uid'].toString() + '">View</a></td>'
+    tbody += '<tr>' + tr + '</tr>';
+  }
+  return tbody;
+}
 
-    /*
-     * List by Date
-     */
-    postData = {request: 'users', order: 'create_time DESC'};
-    $.post('/admin/getData', postData, function(data) {
-      var tbody = '';
-      for (var id in data) {
-        var user = data[id]
-        var tr = '';
-        tr += '<td>' + user['uid'].toString() + '</td>';
-        tr += '<td>' + user['firstname'] + ' <strong>' + user['lastname'] + '</strong></td>';
-        tr += '<td>' + '0.00' + '</td>';
-        tbody += '<tr>' + tr + '</tr>';
-      }
-      $('#list-by-date').html(tbody);
-    }, 'json');
-  });
+$(document).ready(function() {
+  /*
+   * List by Saving
+   */
+  var postData = {request: 'users'};
+  $.post('/admin/getData', postData, function(data) {
+    $('#list-by-saving-loader').hide();
+    $('#list-by-saving').html(getTableHtml(data));
+  }, 'json');
+
+  /*
+   * List by Date
+   */
+  postData = {request: 'users', order: 'create_time DESC'};
+  $.post('/admin/getData', postData, function(data) {
+    $('#list-by-date').html(getTableHtml(data));
+  }, 'json');
+});
 </script>
-</body>
-</html>
+{% endblock %}

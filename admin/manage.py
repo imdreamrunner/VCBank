@@ -17,6 +17,15 @@ class index:
         else:
             return view.index()
 
+class display:
+    def GET(self):
+        inputs = web.input()
+        if not 'm' in inputs:
+            return 'Model not specified'
+        m = inputs.m
+        if m == 'account':
+            return view.displayAccount()
+
 class getData:
     def GET(self):
         return "Undefined method"

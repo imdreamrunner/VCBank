@@ -74,3 +74,15 @@ h1 {
   height: 15px;
   display: block;
 }
+#copyright {
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+#copyright p {
+  font-size: 12px;
+  margin: 0;
+  color: #888;
+}
+#copyright .small {
+  color: #BBB;
+}
