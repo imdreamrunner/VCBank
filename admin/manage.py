@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 import web
 from models import *
 import json
@@ -36,6 +37,7 @@ class getData:
 
     def POST(self):
         inputs = web.input()
+        # time.sleep(1)
         if inputs.request == 'users':
             order = where = False
             if 'order' in inputs:

@@ -54,6 +54,7 @@
           <tbody id="list-by-date">
           </tbody>
         </table>
+        <div id="list-by-date-loader" class="ajax-loader" style="margin-top: -20px"></div>
       </div>
     </div>
   </div>
@@ -99,6 +100,7 @@ $(document).ready(function() {
    */
   postData = {request: 'users', order: 'create_time DESC'};
   $.post('/admin/getData', postData, function(data) {
+    $('#list-by-date-loader').hide();
     $('#list-by-date').html(getTableHtml(data, 1));
   }, 'json');
 });
