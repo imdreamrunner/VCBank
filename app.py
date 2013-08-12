@@ -9,6 +9,7 @@ urls = (
     '/account',                     'visitor.account.display',
     '/logout',                      'visitor.account.logout',
     '/admin',                       'admin.manage.index',
+    '/admin/static',                'admin.manage.static',
     '/admin/display',               'admin.manage.display',
     '/admin/getData',               'admin.manage.getData',
     '/admin/login',                 'admin.auth.login',

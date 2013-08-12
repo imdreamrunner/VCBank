@@ -9,15 +9,19 @@ view = render_jinja('view/admin')
 
 class index:
     def GET(self):
+        return view.index()
+
+class static:
+    def GET(self):
         inputs = web.input()
-        if 'frame' in inputs:
-            try:
-                frame = getattr(view, inputs.frame)
-                return frame()
-            except BaseException:
-                return 'Unable to load frame ' + inputs.frame
-        else:
-            return view.index()
+        if not 'v' in inputs:
+            return 'Page not specified'
+        try:
+            frame = getattr(view, inputs.v)
+            return frame()
+        except BaseException:
+            return 'Unable to load page ' + inputs.v
+
 
 class display:
     def GET(self):

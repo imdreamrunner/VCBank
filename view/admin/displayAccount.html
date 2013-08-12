@@ -1,80 +1,91 @@
 {% extends "frame.html" %}
 {% block heading %}Accounts{% endblock %}
 {% block tabs %}
-<a href="/admin?frame=accounts">Statics</a>
-<a href="/admin?frame=accountsSearch">Search</a>
-<a href="/admin?frame=accountsLists">Lists</a>
-<a href="/admin?frame=accountsCreate">Create</a>
+<a href="/admin/static?v=accounts">Statics</a>
+<a href="/admin/static?v=accountsSearch">Search</a>
+<a href="/admin/static?v=accountsLists">Lists</a>
+<a href="/admin/static?v=accountsCreate">Create</a>
 {% endblock %}
 {% block body %}
 <div class="row-fluid">
-  <div class="span12">
+  <div class="span6">
+      <div class="widget">
+        <div class="title">
+        <span class="icon">
+          <i class="icon-bookmark"></i>
+        </span>
+          <h3>Account Details</h3>
+        </div>
+        <div class="content">
+          <table class="table table-bordered">
+            <tr>
+              <td>First Name</td>
+              <td>{{ user.firstname|e }}</td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>{{ user.lastname|e }}</td>
+            </tr>
+            <!--
+            <tr>
+              <td>Balance</td>
+              <td>{{ user.balance }}</td>
+            </tr>
+            -->
+            <tr>
+              <td>Email</td>
+              <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+              <td>Document Type</td>
+              <td>{{ user.doc_type }}</td>
+            </tr>
+            <tr>
+              <td>Document Information</td>
+              <td>{{ user.doc_info|e }}</td>
+            </tr>
+            <tr>
+              <td>Create Time</td>
+              <td>{{ user.create_time_string }}</td>
+            </tr>
+          </table>
+          <div class="text-center" style="margin-top: -10px">
+            <a href="javascript:" class="btn btn-primary">Edit</a>
+            <a href="javascript:history.go(-1);" class="btn">Back</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div class="title">
+        <span class="icon">
+          <i class="icon-bookmark"></i>
+        </span>
+          <h3>Login Records</h3>
+        </div>
+        <div class="content">
+        </div>
+      </div>
+  </div>
+  <div class="span6">
     <div class="widget">
       <div class="title">
         <span class="icon">
           <i class="icon-bookmark"></i>
         </span>
-        <h3>Account Details</h3>
+        <h3>Transactions</h3>
       </div>
       <div class="content">
-        <table class="table table-bordered">
-          <tr>
-            <td>First Name</td>
-            <td>{{ user.firstname|e }}</td>
-          </tr>
-          <tr>
-            <td>Last Name</td>
-            <td>{{ user.lastname|e }}</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>{{ user.email }}</td>
-          </tr>
-          <tr>
-            <td>Phone</td>
-            <td>{{ user.phone }}</td>
-          </tr>
-          <tr>
-            <td>Document Type</td>
-            <td>{{ user.doc_type }}</td>
-          </tr>
-          <tr>
-            <td>Document Information</td>
-            <td>{{ user.doc_info|e }}</td>
-          </tr>
-          <tr>
-            <td>Create Time</td>
-            <td>{{ user.create_time_string }}</td>
-          </tr>
-        </table>
       </div>
     </div>
   </div>
 </div>
 <div class="row-fluid">
   <div class="span6">
-    <div class="widget">
-      <div class="title">
-        <span class="icon">
-          <i class="icon-bookmark"></i>
-        </span>
-        <h3>Transfer Records</h3>
-      </div>
-      <div class="content">
-      </div>
-    </div>
-  </div>
-  <div class="span6">
-    <div class="widget">
-      <div class="title">
-        <span class="icon">
-          <i class="icon-bookmark"></i>
-        </span>
-        <h3>Login Records</h3>
-      </div>
-      <div class="content">
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %}

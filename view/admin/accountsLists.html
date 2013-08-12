@@ -1,10 +1,10 @@
 {% extends "frame.html" %}
 {% block heading %}Accounts{% endblock %}
 {% block tabs %}
-<a href="/admin?frame=accounts">Statics</a>
-<a href="/admin?frame=accountsSearch">Search</a>
-<a href="/admin?frame=accountsLists" class="current">Lists</a>
-<a href="/admin?frame=accountsCreate">Create</a>
+<a href="/admin/static?v=accounts">Statics</a>
+<a href="/admin/static?v=accountsSearch">Search</a>
+<a href="/admin/static?v=accountsLists" class="current">Lists</a>
+<a href="/admin/static?v=accountsCreate">Create</a>
 {% endblock %}
 {% block body %}
 <div class="row-fluid">
@@ -79,7 +79,7 @@ function getTableHtml(data, type) {
     } else {
       tr += '<td>' + '0.00' + '</td>';
     }
-    tr += '<td><a href="/admin/display?m=account&uid=' + user['uid'].toString() + '">View</a></td>'
+    tr += '<td><a href="/admin/display?m=account&uid=' + user['uid'].toString() + '">Display</a></td>'
     tbody += '<tr>' + tr + '</tr>';
   }
   return tbody;
